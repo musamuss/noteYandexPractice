@@ -6,3 +6,14 @@
 //
 
 import Foundation
+import UIKit
+
+extension Note{
+    //функция для разбора json
+    static func parse(json: [String: Any]) -> Note?{
+        
+    }
+    
+    
+    
+}

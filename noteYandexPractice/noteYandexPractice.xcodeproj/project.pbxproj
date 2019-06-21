@@ -12,6 +12,8 @@
 		84011ED222BD82AE00F10347 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84011ED022BD82AE00F10347 /* Main.storyboard */; };
 		84011ED422BD82AF00F10347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84011ED322BD82AF00F10347 /* Assets.xcassets */; };
 		84011ED722BD82AF00F10347 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84011ED522BD82AF00F10347 /* LaunchScreen.storyboard */; };
+		84011EE022BD832A00F10347 /* NoteExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84011EDE22BD832A00F10347 /* NoteExtensions.swift */; };
+		84011EE122BD832A00F10347 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84011EDF22BD832A00F10347 /* Note.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		84011ED322BD82AF00F10347 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84011ED622BD82AF00F10347 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84011ED822BD82AF00F10347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84011EDE22BD832A00F10347 /* NoteExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteExtensions.swift; sourceTree = "<group>"; };
+		84011EDF22BD832A00F10347 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				84011ECC22BD82AE00F10347 /* AppDelegate.swift */,
+				84011EDF22BD832A00F10347 /* Note.swift */,
+				84011EDE22BD832A00F10347 /* NoteExtensions.swift */,
 				84011ECE22BD82AE00F10347 /* ViewController.swift */,
 				84011ED022BD82AE00F10347 /* Main.storyboard */,
 				84011ED322BD82AF00F10347 /* Assets.xcassets */,
@@ -137,6 +143,8 @@
 			files = (
 				84011ECF22BD82AE00F10347 /* ViewController.swift in Sources */,
 				84011ECD22BD82AE00F10347 /* AppDelegate.swift in Sources */,
+				84011EE022BD832A00F10347 /* NoteExtensions.swift in Sources */,
+				84011EE122BD832A00F10347 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
