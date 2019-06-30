@@ -1,0 +1,6 @@
+framework module Pods_noteYandexPracticeTests {
+  umbrella header "Pods-noteYandexPracticeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
