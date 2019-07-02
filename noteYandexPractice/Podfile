@@ -4,7 +4,7 @@
 target 'noteYandexPractice' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
- pod 'CorePlot', 2.2
+ pod 'CocoaLumberjack/Swift'
   # Pods for noteYandexPractice
 
   target 'noteYandexPracticeTests' do
