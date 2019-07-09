@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ColorPicker" customModule="Notes01" customModuleProvider="target">
+            <connections>
+                <outlet property="brightnessSlider" destination="Epz-hV-OGe" id="tGH-Xe-066"/>
+                <outlet property="colorPalette" destination="DHq-6s-beH" id="P8V-da-if7"/>
+                <outlet property="colorString" destination="RFZ-Tg-8mr" id="Kxx-YN-yrx"/>
+                <outlet property="pickedColor" destination="fl2-xx-kzu" id="Xhe-RG-lh0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fl2-xx-kzu">
+                    <rect key="frame" x="20" y="64" width="80" height="80"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="05i-vL-gYV"/>
+                        <constraint firstAttribute="height" constant="80" id="6Lz-4Z-o22"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#ffccdd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFZ-Tg-8mr">
+                    <rect key="frame" x="20" y="152" width="60" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjw-0h-fHM">
+                    <rect key="frame" x="120" y="93.5" width="82" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Epz-hV-OGe">
+                    <rect key="frame" x="118" y="147.5" width="278" height="31"/>
+                    <connections>
+                        <action selector="sliderValueChanged:" destination="-1" eventType="valueChanged" id="g2e-24-xEl"/>
+                    </connections>
+                </slider>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHq-6s-beH" customClass="ColorPaletteView" customModule="Notes01" customModuleProvider="target">
+                    <rect key="frame" x="20" y="197.5" width="374" height="594.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTP-d9-g7I">
+                    <rect key="frame" x="188.5" y="812" width="37" height="30"/>
+                    <state key="normal" title="Done"/>
+                    <connections>
+                        <action selector="btnDoneClicked:" destination="-1" eventType="touchUpInside" id="M1b-Eu-lyH"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="jjw-0h-fHM" firstAttribute="centerY" secondItem="fl2-xx-kzu" secondAttribute="centerY" id="051-R9-fBO"/>
+                <constraint firstItem="fl2-xx-kzu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="9Nw-wh-Utq"/>
+                <constraint firstItem="Epz-hV-OGe" firstAttribute="centerY" secondItem="RFZ-Tg-8mr" secondAttribute="centerY" id="Csz-TS-YqY"/>
+                <constraint firstItem="PTP-d9-g7I" firstAttribute="top" secondItem="DHq-6s-beH" secondAttribute="bottom" constant="20" id="IwV-fe-mgu"/>
+                <constraint firstItem="RFZ-Tg-8mr" firstAttribute="top" secondItem="fl2-xx-kzu" secondAttribute="bottom" constant="8" id="Lt1-Gn-PN7"/>
+                <constraint firstItem="jjw-0h-fHM" firstAttribute="leading" secondItem="fl2-xx-kzu" secondAttribute="trailing" constant="20" id="PBN-QM-9X4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Epz-hV-OGe" secondAttribute="trailing" constant="20" id="SEL-MH-NAA"/>
+                <constraint firstItem="Epz-hV-OGe" firstAttribute="leading" secondItem="fl2-xx-kzu" secondAttribute="trailing" constant="20" id="c4a-Kr-zC6"/>
+                <constraint firstItem="DHq-6s-beH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="d5M-LH-0Gi"/>
+                <constraint firstItem="DHq-6s-beH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dSW-NX-1OA"/>
+                <constraint firstItem="DHq-6s-beH" firstAttribute="top" secondItem="Epz-hV-OGe" secondAttribute="bottom" constant="20" id="eGM-H9-arw"/>
+                <constraint firstItem="fl2-xx-kzu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="f0n-6V-Sf1"/>
+                <constraint firstItem="RFZ-Tg-8mr" firstAttribute="leading" secondItem="fl2-xx-kzu" secondAttribute="leading" id="jkY-EB-2IO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="PTP-d9-g7I" secondAttribute="bottom" constant="20" id="pRZ-aD-TxC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DHq-6s-beH" secondAttribute="trailing" constant="20" id="tkA-nn-Yac"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jjw-0h-fHM" secondAttribute="trailing" constant="20" id="vhI-xs-zYI"/>
+                <constraint firstItem="PTP-d9-g7I" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yHc-Xx-M1w"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
+        </view>
+    </objects>
+</document>

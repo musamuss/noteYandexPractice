@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ColorsBarView" customModule="noteYandexPractice" customModuleProvider="target">
+            <connections>
+                <outlet property="colorCustom" destination="sL7-YH-CEu" id="duy-1M-WhH"/>
+                <outlet property="colorDark" destination="yQV-VN-P7e" id="rM5-7t-fdC"/>
+                <outlet property="colorLight" destination="kpc-P5-MOv" id="ekR-MX-y0T"/>
+                <outlet property="colorMild" destination="eBK-Q0-RHw" id="1DJ-DG-Hv7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="340" height="199"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpc-P5-MOv" customClass="ColorMainView" customModule="noteYandexPractice" customModuleProvider="target">
+                    <rect key="frame" x="20" y="64" width="60" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="fDj-10-37X"/>
+                        <constraint firstAttribute="height" constant="60" id="q3U-DL-101"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="noteColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eBK-Q0-RHw" customClass="ColorMainView" customModule="noteYandexPractice" customModuleProvider="target">
+                    <rect key="frame" x="100" y="64" width="60" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="BjE-0d-P6q"/>
+                        <constraint firstAttribute="height" constant="60" id="ChT-VH-JNZ"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="noteColor">
+                            <color key="value" red="0.97935538990000004" green="0.0" blue="0.9038772032119754" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yQV-VN-P7e" customClass="ColorMainView" customModule="noteYandexPractice" customModuleProvider="target">
+                    <rect key="frame" x="180" y="64" width="60" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="2mB-Ai-KJC"/>
+                        <constraint firstAttribute="height" constant="60" id="Kql-fQ-Qtp"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="noteColor">
+                            <color key="value" red="0.47087602136774992" green="0.0" blue="0.47233899111675126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sL7-YH-CEu" customClass="ColorPickMarker" customModule="noteYandexPractice" customModuleProvider="target">
+                    <rect key="frame" x="260" y="64" width="60" height="60"/>
+                    <color key="backgroundColor" red="0.40456169843673706" green="0.38305851817131042" blue="0.6716761589050293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="D35-Pf-sKX"/>
+                        <constraint firstAttribute="height" constant="60" id="Szv-xW-UzP"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="noteColor">
+                            <color key="value" red="1" green="0.99427838239999999" blue="0.87119207300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="gays"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="eBK-Q0-RHw" firstAttribute="centerY" secondItem="kpc-P5-MOv" secondAttribute="centerY" id="0Ea-fL-WnZ"/>
+                <constraint firstItem="sL7-YH-CEu" firstAttribute="centerY" secondItem="yQV-VN-P7e" secondAttribute="centerY" id="4DH-Bu-4dX"/>
+                <constraint firstItem="kpc-P5-MOv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="6cC-Ut-PsN"/>
+                <constraint firstItem="eBK-Q0-RHw" firstAttribute="leading" secondItem="kpc-P5-MOv" secondAttribute="trailing" constant="20" id="ZfU-wU-vl9"/>
+                <constraint firstItem="kpc-P5-MOv" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="aHF-MH-AdG"/>
+                <constraint firstItem="sL7-YH-CEu" firstAttribute="leading" secondItem="yQV-VN-P7e" secondAttribute="trailing" constant="20" id="dgL-lQ-GKH"/>
+                <constraint firstItem="yQV-VN-P7e" firstAttribute="leading" secondItem="eBK-Q0-RHw" secondAttribute="trailing" constant="20" id="tvG-Jt-Nkq"/>
+                <constraint firstItem="yQV-VN-P7e" firstAttribute="centerY" secondItem="eBK-Q0-RHw" secondAttribute="centerY" id="wVa-R1-eGA"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-15.942028985507248" y="-198.54910714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="gays" width="720" height="720"/>
+    </resources>
+</document>

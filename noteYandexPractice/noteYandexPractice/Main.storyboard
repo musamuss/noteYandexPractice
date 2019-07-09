@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nhw-MX-QNd">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="sNA-0b-VW6">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="nhw-MX-QNd" customClass="ViewController" customModule="noteYandexPractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QtG-us-FTS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWH-bA-abo" customClass="ColorPicker" customModule="noteYandexPractice" customModuleProvider="target">
+                                <rect key="frame" x="10" y="54" width="394" height="798"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="iVv-f2-0dg">
+                                <rect key="frame" x="10" y="54" width="394" height="798"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="65R-nG-7cq">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="226.5"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Nazvanie" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z8D-mh-Cz6">
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Vvedite Text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kMG-UC-R0W">
+                                                <rect key="frame" x="0.0" y="40" width="394" height="35.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fXW-9s-li7">
+                                                <rect key="frame" x="0.0" y="85.5" width="394" height="31"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use destroy date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3D-6P-Eky">
+                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="31"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="200" id="Sz5-in-yVC"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9Xc-jb-Cp2">
+                                                        <rect key="frame" x="210" y="0.0" width="186" height="31"/>
+                                                        <connections>
+                                                            <action selector="dateSwitchClick:" destination="nhw-MX-QNd" eventType="valueChanged" id="h2b-7V-NXm"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
+                                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="vUg-q6-ONk">
+                                                <rect key="frame" x="0.0" y="121.5" width="394" height="0.0"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="584282736.49952602">
+                                                    <!--2019-07-08 12:45:36 +0000-->
+                                                </date>
+                                            </datePicker>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rgo-We-QOL" customClass="ColorsBarView" customModule="noteYandexPractice" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="126.5" width="394" height="100"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="Y0l-Ot-6Pu"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="65R-nG-7cq" secondAttribute="bottom" id="0vP-y9-qRV"/>
+                                    <constraint firstItem="65R-nG-7cq" firstAttribute="leading" secondItem="iVv-f2-0dg" secondAttribute="leading" id="GqC-Nd-oSh"/>
+                                    <constraint firstItem="65R-nG-7cq" firstAttribute="top" secondItem="iVv-f2-0dg" secondAttribute="top" id="JfJ-od-7fg"/>
+                                    <constraint firstItem="65R-nG-7cq" firstAttribute="width" secondItem="iVv-f2-0dg" secondAttribute="width" id="jfi-lk-9pW"/>
+                                    <constraint firstAttribute="trailing" secondItem="65R-nG-7cq" secondAttribute="trailing" id="p1X-kt-yDp"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JWH-bA-abo" firstAttribute="leading" secondItem="jui-AY-Dqf" secondAttribute="leading" constant="10" id="9Lo-Bh-gd4"/>
+                            <constraint firstItem="JWH-bA-abo" firstAttribute="top" secondItem="jui-AY-Dqf" secondAttribute="top" constant="10" id="QGh-hT-NDi"/>
+                            <constraint firstItem="jui-AY-Dqf" firstAttribute="bottom" secondItem="JWH-bA-abo" secondAttribute="bottom" constant="10" id="UJ7-ct-iQE"/>
+                            <constraint firstItem="iVv-f2-0dg" firstAttribute="leading" secondItem="jui-AY-Dqf" secondAttribute="leading" constant="10" id="bv4-pS-xaO"/>
+                            <constraint firstItem="iVv-f2-0dg" firstAttribute="top" secondItem="jui-AY-Dqf" secondAttribute="top" constant="10" id="ixg-Tc-a5G"/>
+                            <constraint firstItem="jui-AY-Dqf" firstAttribute="bottom" secondItem="iVv-f2-0dg" secondAttribute="bottom" constant="10" id="oFx-sy-7Fy"/>
+                            <constraint firstItem="jui-AY-Dqf" firstAttribute="trailing" secondItem="iVv-f2-0dg" secondAttribute="trailing" constant="10" id="op1-Rk-OIe"/>
+                            <constraint firstItem="jui-AY-Dqf" firstAttribute="trailing" secondItem="JWH-bA-abo" secondAttribute="trailing" constant="10" id="yT9-Ne-NHK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jui-AY-Dqf"/>
+                    </view>
+                    <connections>
+                        <outlet property="colorPicker" destination="JWH-bA-abo" id="IKL-bK-ndB"/>
+                        <outlet property="colorsBar" destination="rgo-We-QOL" id="1pV-IR-Hbk"/>
+                        <outlet property="datePicker" destination="vUg-q6-ONk" id="y4A-jl-a4p"/>
+                        <outlet property="dateSwitch" destination="9Xc-jb-Cp2" id="nlS-LI-8NO"/>
+                        <outlet property="noteTextView" destination="kMG-UC-R0W" id="F1P-Ku-u1X"/>
+                        <outlet property="scrollView" destination="iVv-f2-0dg" id="Akj-Ad-woE"/>
+                        <outlet property="stackView" destination="65R-nG-7cq" id="aCP-pd-oqA"/>
+                        <outlet property="titleTextField" destination="z8D-mh-Cz6" id="ejS-Sa-4WJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ETM-Co-2rI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-352" y="15"/>
+        </scene>
+    </scenes>
+</document>
