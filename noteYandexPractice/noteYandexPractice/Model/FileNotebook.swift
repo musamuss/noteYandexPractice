@@ -1,80 +1,88 @@
-//
-//  FileNotebook.swift
-//  noteYandexPractice
-//
-//  Created by Admin on 24/06/2019.
-//  Copyright © 2019 musamuss. All rights reserved.
-//
+////
+////  FileNotebook.swift
+////  noteYandexPractice
+////
+////  Created by Admin on 24/06/2019.
+////  Copyright © 2019 musamuss. All rights reserved.
+////
+import UIKit
+import CocoaLumberjack
 
-import Foundation
 class FileNotebook {
-    private(set) var notes: [Note] = []
-        
-        public func add(_ note: Note) {
-            remove(with: note.uid)
+    
+    init(notes: [Note]) {
+        for note in notes {
+            add(note)
+        }
+    }
+    
+    public private(set) var notes: [Note] = []
+    
+    public var newNote: Note?
+    
+    public func add(_ note: Note){
+        DDLogInfo("FileNotebook.add(note \(note))")
+        let index = notes.firstIndex{ $0.uid == note.uid }
+        if let index = index {
+            notes.remove(at: index)
+            notes.insert(note, at: index)
+        } else {
             notes.append(note)
         }
+    }
+    
+    public func remove(with uid: String) {
+        DDLogInfo("FileNotebook.remove(with uid:\(uid))")
+        notes.removeAll { $0.uid == uid }
+    }
+    
+    public func saveToFile() {
+        DDLogInfo("FileNotebook.saveToFile()")
         
-        public func remove(with uid: String) {
-            for (index, note) in notes.enumerated() {
-                if note.uid == uid {
-                    notes.remove(at: index)
-                }
-            }
+        let path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
+        guard path != nil else {
+            return
         }
         
-        public func saveToFile() {
-            guard let path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
-                return
-            }
-            
-            let dirUrl = path.appendingPathComponent("noteYandexPractice")
-            var isDir: ObjCBool = false
-            
-            if !FileManager.default.fileExists(atPath: dirUrl.absoluteString, isDirectory: &isDir), !isDir.boolValue {
-                do {
-                    try FileManager.default.createDirectory(at: dirUrl, withIntermediateDirectories: true)
-                } catch {
-                    return
-                }
-            }
-            
-            let fileUrl = dirUrl.appendingPathComponent("Notes.sav")
-            
-            do {
-                var dumpedNotes: [[String: Any]] = []
-                for n in notes {
-                    dumpedNotes.append(n.json)
-                }
-                let data = try JSONSerialization.data(withJSONObject: dumpedNotes)
-                try data.write(to: fileUrl)
-            } catch {
-                return
-            }
-        }
+        let dir = path!.appendingPathComponent("Notebooks", isDirectory: true)
+        var isDir: ObjCBool = false
         
-        public func loadFromFile() {
-            guard let path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
-                return
-            }
-            
-            let dirUrl = path.appendingPathComponent("noteYandexPractice", isDirectory: true)
-            let fileUrl = dirUrl.appendingPathComponent("Notes.sav")
-            
+        if !FileManager.default.fileExists(atPath: dir.path, isDirectory: &isDir), !isDir.boolValue {
             do {
-                let data = try Data(contentsOf: fileUrl)
-                let dumpedNotes = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
-                
-                notes.removeAll()
-                for dump in dumpedNotes {
-                    if let note = Note.parse(json: dump) {
-                        notes.append(note)
+                try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true,
+                                                        attributes: [:])
+            } catch { }
+        }
+        let filename = dir.appendingPathComponent("FileNotebook.data")
+        do {
+            let data = try JSONSerialization.data(withJSONObject: notes.map { $0.json }, options: [])
+            //FileManager.default.createFile(atPath: filename.path, contents: data, attributes: [:])
+            try data.write(to: filename)
+        } catch { }
+    }
+    
+    public func loadFromFile() {
+        DDLogInfo("FileNotebook.loadFromFile()")
+        var path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
+        guard path != nil else {
+            return
+        }
+        notes.removeAll()
+        
+        path = path!.appendingPathComponent("Notebooks", isDirectory: true)
+        path = path!.appendingPathComponent("FileNotebook.data", isDirectory: false)
+        
+        if FileManager.default.fileExists(atPath: path!.path) {
+            do {
+                let data = try Data.init(contentsOf: path!)
+                let items = try JSONSerialization.jsonObject(with: data, options: []) as! Array<[String: Any]>
+                for i in items {
+                    let note = Note.parse(json: i)
+                    if note != nil {
+                        self.add(note!)
                     }
                 }
-                
-            } catch {
-                return
-            }
-            
+            } catch { }
         }
+    }
 }
