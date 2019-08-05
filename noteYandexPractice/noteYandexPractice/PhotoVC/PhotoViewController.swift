@@ -55,15 +55,6 @@ class PhotoViewController: UIViewController {
         
         
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//       if let lastIndex = lastIndex  {
-//            var frame: CGRect = scrollView.frame
-//            frame.origin.x = frame.width * CGFloat(lastIndex)
-//            frame.origin.y = 0
-//            scrollView.scrollRectToVisible(frame, animated: false)
-//        }
-//    }
    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

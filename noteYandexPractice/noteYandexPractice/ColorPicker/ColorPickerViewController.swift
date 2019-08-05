@@ -1,38 +1,31 @@
 //
 //  ColorPickerViewController.swift
-////  noteYandexPractice
-////
+//  noteYandexPractice
+//
 ////  Created by Admin on 10/07/2019.
 ////  Copyright © 2019 musamuss. All rights reserved.
-////
+//
 
 import UIKit
-import CocoaLumberjack
 
 class ColorPickerViewController: UIViewController {
 
-    
-    var noteController: NoteCardViewController?
-    var note: Note?
-    // colorSelector.customColor
-    @IBOutlet weak var colorPicker: ColorPickerClass!
+    @IBOutlet weak var colorPicker: ColorPicker!
+    var mainViewController: EditNote?
+    var color: CGColor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let color = noteController?.colorSelector.customColor {
-            colorPicker.currentColor = color
-        }
+
+        // Do any additional setup after loading the view.
+        colorPicker.set(Color: color ?? UIColor.white.cgColor)
         
-        colorPicker.colorSelected = { [weak self] color in
-           
-            self?.noteController?.setDataOutside(color: color, noteOut: self?.note ?? Note(title: "", content: "", priority: .normal))
-            //self?.noteController?.note = self?.note
-            //self?.note?.color = color
-            DDLogDebug("colorSelected \(color)")
-            self?.navigationController?.popViewController(animated: true)
-        }
+        
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        mainViewController?.colorSelectableView.Color = colorPicker.getColor() // get current color
+    }
 
     /*
     // MARK: - Navigation

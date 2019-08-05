@@ -8,81 +8,95 @@
 import UIKit
 import CocoaLumberjack
 
+
+import Foundation
+import UIKit
+import CocoaLumberjack
+
+/// реализация записной книжки
 class FileNotebook {
+    /// закрытая для внешнего изменения, но открытая для получения коллекция
+    private(set) var notes: [Note] = []
     
-    init(notes: [Note]) {
-        for note in notes {
-            add(note)
-        }
-    }
-    
-    public private(set) var notes: [Note] = []
-    
-    public var newNote: Note?
-    
-    public func add(_ note: Note){
-        DDLogInfo("FileNotebook.add(note \(note))")
-        let index = notes.firstIndex{ $0.uid == note.uid }
-        if let index = index {
-            notes.remove(at: index)
-            notes.insert(note, at: index)
-        } else {
-            notes.append(note)
-        }
-    }
-    
-    public func remove(with uid: String) {
-        DDLogInfo("FileNotebook.remove(with uid:\(uid))")
-        notes.removeAll { $0.uid == uid }
-    }
-    
-    public func saveToFile() {
-        DDLogInfo("FileNotebook.saveToFile()")
-        
-        let path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
-        guard path != nil else {
-            return
-        }
-        
-        let dir = path!.appendingPathComponent("Notebooks", isDirectory: true)
-        var isDir: ObjCBool = false
-        
-        if !FileManager.default.fileExists(atPath: dir.path, isDirectory: &isDir), !isDir.boolValue {
-            do {
-                try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true,
-                                                        attributes: [:])
-            } catch { }
-        }
-        let filename = dir.appendingPathComponent("FileNotebook.data")
-        do {
-            let data = try JSONSerialization.data(withJSONObject: notes.map { $0.json }, options: [])
-            //FileManager.default.createFile(atPath: filename.path, contents: data, attributes: [:])
-            try data.write(to: filename)
-        } catch { }
-    }
-    
-    public func loadFromFile() {
-        DDLogInfo("FileNotebook.loadFromFile()")
-        var path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
-        guard path != nil else {
-            return
-        }
-        notes.removeAll()
-        
-        path = path!.appendingPathComponent("Notebooks", isDirectory: true)
-        path = path!.appendingPathComponent("FileNotebook.data", isDirectory: false)
-        
-        if FileManager.default.fileExists(atPath: path!.path) {
-            do {
-                let data = try Data.init(contentsOf: path!)
-                let items = try JSONSerialization.jsonObject(with: data, options: []) as! Array<[String: Any]>
-                for i in items {
-                    let note = Note.parse(json: i)
-                    if note != nil {
-                        self.add(note!)
-                    }
+    /// функцияя добавленияя новой заметки
+    public func add(_ note: Note, override: Bool = false) {
+        if override {
+            for (index, oldNote) in notes.enumerated() {
+                if oldNote.uid == note.uid {
+                    notes[index] = note
+                    DDLogDebug("Note added with override")
+                    return
                 }
-            } catch { }
+            }
+            notes.append(note)
+        } else {
+            // проверка на дубликаты
+            if let _ = notes.first(where: {$0.uid == note.uid}) {
+                DDLogInfo("Запись с таким uid уже существует!")
+            } else {
+                self.notes.append(note)
+                DDLogInfo("Запись добавлена")
+            }
+        }
+    }
+    
+    /// функция удаления заметки на основе uid
+    public func remove(with uid: String) {
+        self.notes.removeAll(where: { $0.uid == uid })
+    }
+    
+    /// функция сохранения всей записной книжки в файл
+    public func saveToFile() {
+        let dirURL = FileManager
+            .default
+            .urls(for: .cachesDirectory, in: .userDomainMask)
+            .first?
+            .appendingPathComponent("notebook")
+        let fileURL = dirURL?.appendingPathComponent("n.json")
+        
+        do {
+            try FileManager.default.createDirectory(
+                at: dirURL!,
+                withIntermediateDirectories: true,
+                attributes: nil
+            )
+        } catch {
+            DDLogInfo("Cant create directory")
+        }
+        //формируем массив из json
+        let note_jsons: [[String: Any]] = self.notes.map { $0.json }
+        //записываем в файл
+        do {
+            let data = try JSONSerialization.data(withJSONObject: note_jsons)
+            FileManager.default.createFile(atPath: fileURL!.absoluteString, contents: data)
+            try data.write(to: fileURL!)
+        } catch {
+            DDLogInfo("Невозможно создать файл")
+        }
+    }
+    
+    /// функция загрузки записной книжки из файла
+    public func loadFromFile() {
+        let dirURL = FileManager
+            .default
+            .urls(for: .cachesDirectory, in: .userDomainMask)
+            .first?
+            .appendingPathComponent("notebook")
+        guard let fileURL = dirURL?.appendingPathComponent("n.json")
+            else { return }
+        
+        do {
+            let data = try Data(contentsOf: fileURL)
+            let arr = try JSONSerialization.jsonObject(with: data, options: [])
+                as! [[String: Any]] //Array<Dictionary<String, Any>>
+            //формируем массив из json
+            for obj in arr {
+                if let note = Note.parse(json: obj) {
+                    self.add(note, override: true)
+                }
+            }
+        } catch {
+            DDLogInfo("Невозможно прочитать файл")
         }
     }
 }

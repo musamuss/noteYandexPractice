@@ -46,7 +46,7 @@ class GalleryViewController: UIViewController {
             segue.identifier == "ViewSegue" {
             controller.images = self.images
             controller.lastIndex = self.lastIndex
-            DDLogDebug("view \(String(describing: lastIndex)) of \(images.count)")
+           // DDLogDebug("view \(String(describing: lastIndex)) of \(images.count)")
         }
     }
 

@@ -6,69 +6,76 @@
 ////  Copyright © 2019 musamuss. All rights reserved.
 ////
 import UIKit
+import Foundation
+
+extension UIColor {
+    /// Convert RGBA color to integer value
+    func toRGBA() -> NSArray {
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        return NSArray(array: [r, g, b, a])
+    }
+    
+    /// Create RGBA UIColor from integer value
+    static func fromRGBA(_ rgba: NSArray) -> UIColor? {
+        let inner_rgba = rgba as Array
+        guard inner_rgba.count == 4 else { return nil }
+        let v = inner_rgba.map { $0 as! CGFloat }
+        return UIColor(red: v[0], green: v[1], blue: v[2], alpha: v[3])
+    }
+}
 
 extension Note {
+    /// функция разбора json
     static func parse(json: [String: Any]) -> Note? {
-        guard json["uid"] != nil else {
-            return nil
+        guard
+            let uid = json["uid"] as? String,
+            let title = json["title"] as? String,
+            let content = json["content"] as? String,
+            let colorRGBA = json["color"] as? NSArray?,
+            let importanceRaw = json["importance"] as? String?,
+            let selfDestructionDateDouble = json["selfDestructionDate"] as? Double?,
+            // Lets convert json data to swift structures
+            let color = UIColor.fromRGBA(colorRGBA ?? [1.0, 1.0, 1.0, 1.0]),
+            let importance = Importance(rawValue: importanceRaw ?? Importance.normal.rawValue)
+            else {
+                return nil
         }
-        guard json["title"] != nil else {
-            return nil
-        }
-        guard json["content"] != nil else {
-            return nil
-        }
+        let selfDestructionDate: Date? = selfDestructionDateDouble != nil ? Date(timeIntervalSince1970: selfDestructionDateDouble!) : nil
         
-        let uid = json["uid"] as! String
-        let title = json["title"] as! String
-        let content = json["content"] as! String
-        var priority = NotePriority.normal
-        if json["priority"] != nil {
-            priority = NotePriority(rawValue: json["priority"] as! Int) ?? priority
-        }
-        
-        var destroyAt: Date? = nil
-        if json["destroyAt"] != nil {
-            destroyAt = Date(timeIntervalSince1970: json["destroyAt"] as! Double)
-        }
-        
-        var color = UIColor.white
-        if json["color"] != nil {
-            let rgba = json["color"] as! Array<CGFloat>
-            
-            color = UIColor(red: rgba[0], green: rgba[1], blue: rgba[2], alpha: rgba[3])
-        }
-        
-        
-        return Note(title: title, content: content, priority: priority, uid: uid, color: color, destroyAt: destroyAt)
+        return Note(
+            uid: uid,
+            title: title,
+            content: content,
+            color: color,
+            importance: importance,
+            selfDestructionDate: selfDestructionDate
+        )
         
     }
     
+    /// вычислимое значение формируещее json
     var json: [String: Any] {
-        var dict = [String: Any]()
-        dict["uid"] = self.uid
-        dict["title"] = self.title
-        dict["content"] = self.content
-        if self.color != UIColor.white {
-            var r: CGFloat = 0
-            var g: CGFloat = 0
-            var b: CGFloat = 0
-            var a: CGFloat = 0
-            self.color.getRed(&r, green: &g, blue: &b, alpha: &a)
-            dict["color"] = [r,g,b,a]
+        // format UIColor to HEX string
+        
+        var dict: [String: Any] = [
+            "uid" : uid,
+            "title" : title,
+            "content" : content,
+        ] // resulting dictionary
+        // если цвет белый, то не пишем его в словарь
+        if self.color != .white {
+            dict["color"] = self.color.toRGBA()
         }
-        if self.priority != NotePriority.normal {
-            dict["priority"] = self.priority.rawValue
+        // если важность нормальная, то ее тоже не записывем
+        if self.importance != .normal {
+            dict["importance"] = importance.rawValue
         }
-        if self.destroyAt != nil {
-            dict["destroyAt"] = self.destroyAt?.timeIntervalSince1970
+        if let d = self.selfDestructionDate {
+            dict["selfDestructionDate"] = d.timeIntervalSince1970
         }
+        
         return dict
     }
-    
-    static var demoNotes: [Note] = [
-        Note(title:"Тестовая заметка",content: "тут должен был быть какой то текст", priority: .normal, color: UIColor.green),
-        
-        ]
 }
 
