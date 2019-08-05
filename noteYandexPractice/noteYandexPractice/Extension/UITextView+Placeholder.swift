@@ -16,8 +16,7 @@ extension UITextView: UITextViewDelegate {
             self.resizePlaceholder()
         }
     }
-    
-    /// The UITextView placeholder text
+
     public var placeholder: String? {
         get {
             var placeholderText: String?
@@ -38,16 +37,12 @@ extension UITextView: UITextViewDelegate {
         }
     }
     
-    /// When the UITextView did change, show or hide the label based on if the UITextView is empty or not
-    ///
-    /// - Parameter textView: The UITextView that got updated
     public func textViewDidChange(_ textView: UITextView) {
         if let placeholderLabel = self.viewWithTag(100) as? UILabel {
             placeholderLabel.isHidden = self.text.count > 0
         }
     }
     
-    /// Resize the placeholder UILabel to make sure it's in the same position as the UITextView text
     private func resizePlaceholder() {
         if let placeholderLabel = self.viewWithTag(100) as! UILabel? {
             let labelX = self.textContainer.lineFragmentPadding
@@ -58,8 +53,7 @@ extension UITextView: UITextViewDelegate {
             placeholderLabel.frame = CGRect(x: labelX, y: labelY, width: labelWidth, height: labelHeight)
         }
     }
-    
-    /// Adds a placeholder UILabel to this UITextView
+
     private func addPlaceholder(_ placeholderText: String) {
         let placeholderLabel = UILabel()
         

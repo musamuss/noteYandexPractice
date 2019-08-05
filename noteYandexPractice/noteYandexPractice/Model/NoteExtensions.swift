@@ -9,14 +9,12 @@ import UIKit
 import Foundation
 
 extension UIColor {
-    /// Convert RGBA color to integer value
     func toRGBA() -> NSArray {
         var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
         self.getRed(&r, green: &g, blue: &b, alpha: &a)
         return NSArray(array: [r, g, b, a])
     }
     
-    /// Create RGBA UIColor from integer value
     static func fromRGBA(_ rgba: NSArray) -> UIColor? {
         let inner_rgba = rgba as Array
         guard inner_rgba.count == 4 else { return nil }
@@ -26,7 +24,6 @@ extension UIColor {
 }
 
 extension Note {
-    /// функция разбора json
     static func parse(json: [String: Any]) -> Note? {
         guard
             let uid = json["uid"] as? String,
@@ -53,21 +50,17 @@ extension Note {
         )
         
     }
-    
-    /// вычислимое значение формируещее json
     var json: [String: Any] {
-        // format UIColor to HEX string
         
         var dict: [String: Any] = [
             "uid" : uid,
             "title" : title,
             "content" : content,
-        ] // resulting dictionary
-        // если цвет белый, то не пишем его в словарь
+        ]
+       
         if self.color != .white {
             dict["color"] = self.color.toRGBA()
         }
-        // если важность нормальная, то ее тоже не записывем
         if self.importance != .normal {
             dict["importance"] = importance.rawValue
         }

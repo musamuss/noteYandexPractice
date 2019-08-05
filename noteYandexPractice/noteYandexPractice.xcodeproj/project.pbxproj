@@ -35,10 +35,10 @@
 		84FDE44922F7A01700948CF5 /* UITextView+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDE44422F7A01700948CF5 /* UITextView+Placeholder.swift */; };
 		84FDE45E22F7A3CE00948CF5 /* ColorPaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDE45A22F7A3CD00948CF5 /* ColorPaneView.swift */; };
 		84FDE45F22F7A3CE00948CF5 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDE45B22F7A3CE00948CF5 /* ColorPicker.swift */; };
-		84FDE46022F7A3CE00948CF5 /* ColorPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FDE45C22F7A3CE00948CF5 /* ColorPicker.xib */; };
 		84FDE46122F7A3CE00948CF5 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDE45D22F7A3CE00948CF5 /* ColorView.swift */; };
 		84FDE46322F7A3D900948CF5 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDE46222F7A3D800948CF5 /* ColorPickerViewController.swift */; };
 		84FDE46722F7A3E900948CF5 /* SelectionFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDE46622F7A3E800948CF5 /* SelectionFlag.swift */; };
+		84FDE47022F7AC5E00948CF5 /* ColorPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FDE46F22F7AC5E00948CF5 /* ColorPicker.xib */; };
 		84FEDA7222C93CAD00234221 /* noteYandexPracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDA7122C93CAD00234221 /* noteYandexPracticeTests.swift */; };
 		BB9CABD9E8AD58AFD3A588EC /* Pods_noteYandexPractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9C7B97664C677C785F59EF1 /* Pods_noteYandexPractice.framework */; };
 		E8C9A40B8A23441DFB313E1B /* Pods_noteYandexPracticeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533F91FE912D99688B5F242A /* Pods_noteYandexPracticeTests.framework */; };
@@ -89,11 +89,10 @@
 		84FDE44622F7A01700948CF5 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		84FDE45A22F7A3CD00948CF5 /* ColorPaneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPaneView.swift; sourceTree = "<group>"; };
 		84FDE45B22F7A3CE00948CF5 /* ColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
-		84FDE45C22F7A3CE00948CF5 /* ColorPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ColorPicker.xib; path = "../../../../../Downloads/notes-master-2/Notes/ColorPicker/ColorPicker.xib"; sourceTree = "<group>"; };
 		84FDE45D22F7A3CE00948CF5 /* ColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		84FDE46222F7A3D800948CF5 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		84FDE46622F7A3E800948CF5 /* SelectionFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionFlag.swift; sourceTree = "<group>"; };
-		84FDE46922F7A3F100948CF5 /* ColorPicker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorPicker.xib; sourceTree = "<group>"; };
+		84FDE46F22F7AC5E00948CF5 /* ColorPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorPicker.xib; sourceTree = "<group>"; };
 		84FEDA6F22C93CAD00234221 /* noteYandexPracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = noteYandexPracticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FEDA7122C93CAD00234221 /* noteYandexPracticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noteYandexPracticeTests.swift; sourceTree = "<group>"; };
 		84FEDA7322C93CAD00234221 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -166,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				84FDE46822F7A3F100948CF5 /* ColorPicker */,
-				84FDE45C22F7A3CE00948CF5 /* ColorPicker.xib */,
 				8400647822C3DC6400000033 /* Model */,
 				84FDE41922F770D300948CF5 /* Operations */,
 				84011ECC22BD82AE00F10347 /* AppDelegate.swift */,
@@ -248,10 +246,10 @@
 			children = (
 				84FDE45A22F7A3CD00948CF5 /* ColorPaneView.swift */,
 				84FDE45B22F7A3CE00948CF5 /* ColorPicker.swift */,
-				84FDE46922F7A3F100948CF5 /* ColorPicker.xib */,
 				84FDE45D22F7A3CE00948CF5 /* ColorView.swift */,
 				84FDE46222F7A3D800948CF5 /* ColorPickerViewController.swift */,
 				84FDE46622F7A3E800948CF5 /* SelectionFlag.swift */,
+				84FDE46F22F7AC5E00948CF5 /* ColorPicker.xib */,
 			);
 			path = ColorPicker;
 			sourceTree = "<group>";
@@ -372,7 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84027B5522D50B440094C68F /* Main.storyboard in Resources */,
-				84FDE46022F7A3CE00948CF5 /* ColorPicker.xib in Resources */,
+				84FDE47022F7AC5E00948CF5 /* ColorPicker.xib in Resources */,
 				84011ED722BD82AF00F10347 /* LaunchScreen.storyboard in Resources */,
 				84011ED422BD82AF00F10347 /* Assets.xcassets in Resources */,
 			);

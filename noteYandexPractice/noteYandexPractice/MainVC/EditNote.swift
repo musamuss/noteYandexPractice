@@ -129,13 +129,7 @@ class EditNote: UIViewController {
             resetColorSelection()
             colorSelectableView.Selected = true
         }
-/*
-        colorPicker.onCompletedSelection = { color in
-            self.colorSelectableView.Color = color
-            self.resetColorSelection()
-            self.colorSelectableView.Selected = true
-        }
- */
+
         hideKeyboardWhenTappedAround()
     }
     
@@ -172,8 +166,6 @@ class EditNote: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
         if let controller = segue.destination as? ColorPickerViewController,
             segue.identifier == "ShowColorPicker" {
             controller.color = colorSelectableView.Color
