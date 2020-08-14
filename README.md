@@ -1,7 +1,6 @@
 # noteYandexPractice
 **Название задачи и выбранный уровень сложности**
-Собственный проект
-Приложения реализованное в рамках курса от яндекс
+*Собственный проект Приложения реализованное в рамках курса от яндекс*
 
 <p align="center">
   <img width=300 src="https://github.com/musamuss/noteYandexPractice/blob/master/noteYandexPractice/resourse/Screenshot%202020-08-14%20at%2013.30.32.png"/>
